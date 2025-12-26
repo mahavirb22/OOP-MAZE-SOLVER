@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A* Maze Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Info Button -->
+    <button class="info-btn" id="infoBtn" title="How A* Works">ℹ️</button>
+
+    <!-- Info Brochure Modal -->
+    <div class="brochure-overlay" id="brochureOverlay">
+        <div class="brochure">
+            <button class="close-btn" id="closeBtn">✕</button>
+            <h2>🧠 How A* Algorithm Works</h2>
+            
+            <div class="brochure-content">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>🎯 Start & Goal</h3>
+                    <p>A* begins at the start position (green) and aims to find the shortest path to the goal (red).</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>📊 Scoring System</h3>
+                    <p><strong>f(n) = g(n) + h(n)</strong></p>
+                    <ul>
+                        <li><strong>g(n)</strong>: Cost from start to current node</li>
+                        <li><strong>h(n)</strong>: Estimated cost to goal (heuristic)</li>
+                        <li><strong>f(n)</strong>: Total estimated cost</li>
+                    </ul>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>🔍 Exploration</h3>
+                    <p>A* explores nodes with the lowest f(n) score first. The blue/purple cells show explored areas.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>🎯 Path Finding</h3>
+                    <p>When multiple paths exist, A* intelligently chooses the shortest route using the heuristic function.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>✨ Final Path</h3>
+                    <p>The red path shows the shortest route found. A* guarantees optimal solution!</p>
+                </div>
+            </div>
+
+            <div class="legend-info">
+                <h3>Color Legend</h3>
+                <div class="legend-grid">
+                    <div><span class="dot green"></span> Start Point</div>
+                    <div><span class="dot red"></span> Goal Point</div>
+                    <div><span class="dot blue"></span> Explored Nodes</div>
+                    <div><span class="dot pink"></span> Shortest Path</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>🎯 A* Maze Pathfinding</h1>
+        <p class="subtitle">Watch the A* algorithm find the shortest path through multiple routes!</p>
+        
+        <div class="controls">
+            <label>
+                Maze Size: 
+                <input type="number" id="mazeSize" value="15" min="5" max="50">
+            </label>
+            <button id="generateBtn">🔄 Generate Maze</button>
+        </div>
+
+        <div id="status" class="status">Ready to generate maze</div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+            <div class="canvas-container">
+                <canvas id="mazeCanvas"></canvas>
+            </div>
+
+            <button id="solveBtn" class="secondary-btn" style="display:none;">✨ Visualize A* Algorithm</button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color legend-wall"></div>
+                <span>Wall</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-path"></div>
+                <span>Path</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-explored"></div>
+                <span>Explored (A*)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color legend-solution"></div>
+                <span>Shortest Path</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
